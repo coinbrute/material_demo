@@ -1,0 +1,53 @@
+<div class="flex-it">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="source-player-header"></div>
+            <mat-card-title><strong>Suorce Player Name:</strong> {{sourcePlayer}}</mat-card-title>
+            <mat-card-subtitle><strong>Source Player ID:</strong> {{sourcePid}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{gif2}}" alt="Player profile gif.">
+        <mat-card-content>
+            <p>
+            This is the Source player's profile gif. 
+            </p>
+        </mat-card-content>
+        <mat-card-subtitle><strong>Source Player Attack Method:</strong> {{attackMethod}}</mat-card-subtitle>
+        <mat-card-subtitle><strong>Source Player Damage Amount:</strong> {{damageAmt}}</mat-card-subtitle>
+        <mat-card-content>
+            <p>
+                <strong>{{sourcePlayer}}'s</strong> attack of <strong>{{attackMethod}}</strong> 
+                would deal <strong>{{damageAmt}}</strong> total hit points against <strong>{{targetPlayer}}</strong>.
+                <strong>{{targetPlayer}}</strong> has <strong>{{targetTotalHealth}}</strong> hit points which would make this <strong>{{survivable}}</strong> for <strong>{{targetPlayer}}</strong> to withstand 
+                and continue playing against.
+                After taking damage <strong>{{targetPlayer}}</strong> would be left with <strong>{{remainingHP}}</strong>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="target-player-header"></div>
+            <mat-card-title><strong>Target Player Name:</strong> {{targetPlayer}}</mat-card-title>
+            <mat-card-subtitle><strong>Target Player ID:</strong> {{targetPid}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{gif}}" alt="Player profile gif.">
+        <mat-card-content>
+            <p>
+            This is the target player's profile gif. 
+            </p>
+        </mat-card-content>
+        <mat-card-subtitle><strong>Target Player Total Health:</strong> {{targetTotalHealth}}</mat-card-subtitle>
+        <mat-card-subtitle><strong>Target Player Damage Taken:</strong> {{damageAmt}}</mat-card-subtitle>
+        <mat-card-content>
+            <p>
+                The damage sustained from <strong>{{sourcePlayer}}'s</strong> attack of <strong>{{attackMethod}}</strong> 
+                would deal <strong>{{damageAmt}}</strong> total hit points.
+                This is <strong>{{survivable}}</strong> for <strong>{{targetPlayer}}</strong> to withstand 
+                and continue playing against.
+                After taking damage <strong>{{targetPlayer}}</strong> would be left with <strong>{{remainingHP}}</strong>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
