@@ -38,10 +38,10 @@ export class HomeComponent implements OnInit {
           this.attackMethod = result.payload[0].method;
           this.damageAmt = result.payload[0].damage;
           this.dataService.getGif().subscribe(result => {
-            this.gif = result.data.fixed_height_downsampled_url;
+            this.gif = result.data.fixed_height_small_url;
           })
           this.dataService.getGif().subscribe(result => {
-            this.gif2 = result.data.fixed_height_downsampled_url;
+            this.gif2 = result.data.fixed_height_small_url;
           })
           this.targetTotalHealth - this.damageAmt > 0 ? 
             this.survivable = "survivable" 
