@@ -55,4 +55,8 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  goToList(): void {
+    window.location.href = "/list"
+  }
+
 }

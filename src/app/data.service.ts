@@ -16,6 +16,10 @@ export class DataService {
     return this.http.get<PayloadResponse>(this.BASE_URL);
   }
 
+  async getPlayerAsync(): Promise<any> {
+    return await this.http.get(this.BASE_URL).toPromise();
+  }
+
   getGif(): Observable<any> {
     return this.http.get(`https://api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&rating=g`);
   }
