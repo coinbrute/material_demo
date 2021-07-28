@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   targetPid: string;
   attackMethod: string;
   damageAmt: number;
-  targetTotalHealth: number = Math.floor(Math.random()*100)
+  targetTotalHealth: number = Math.floor(Math.random() * 100);
   gif: string;
   gif2: string;
   survivable: string;
@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getPlayerData().subscribe(
       result => {
-        if(result.reason == "OK") {
-          window.alert(`Successfully gathered player info: STATUS...${result.reason}`)
+        if (result.reason === 'OK') {
+          window.alert(`Successfully gathered player info: STATUS...${result.reason}`);
           this.platform = result.payload[0].platform;
           this.region = result.payload[0].region;
           this.sourcePlayer = /[^#]*/.exec(result.payload[0].source_player_id)[0];
@@ -37,15 +37,17 @@ export class HomeComponent implements OnInit {
           this.targetPid = result.payload[0].target_player_id.split('#')[1];
           this.attackMethod = result.payload[0].method;
           this.damageAmt = result.payload[0].damage;
+          // tslint:disable-next-line:no-shadowed-variable
           this.dataService.getGif().subscribe(result => {
             this.gif = result.data.fixed_height_small_url;
-          })
+          });
+          // tslint:disable-next-line:no-shadowed-variable
           this.dataService.getGif().subscribe(result => {
             this.gif2 = result.data.fixed_height_small_url;
-          })
-          this.targetTotalHealth - this.damageAmt > 0 ? 
-            this.survivable = "survivable" 
-            : this.survivable = "unsurvivable";
+          });
+          this.targetTotalHealth - this.damageAmt > 0 ?
+            this.survivable = 'survivable'
+            : this.survivable = 'unsurvivable';
           this.remainingHP = this.targetTotalHealth - this.damageAmt;
         }
       },
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToList(): void {
-    window.location.href = "/list"
+    window.location.href = '/list';
   }
 
 }

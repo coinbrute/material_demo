@@ -21,39 +21,39 @@ export class ListComponent implements OnInit {
   dataSource: TableElement[] = [];
   columnsToDisplay = ['Source Player', 'Attack Method', 'Damage Amount', 'Target Player', 'Total Health'];
   expandedElement: TableElement | null;
-  status: string = ''
+  status = '';
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    for(let i=0;i<10;i++){
+    for (let i = 0; i < 10; i++){
       this.callPlayerData();
     }
-    console.log(this.dataSource)
+    console.log(this.dataSource);
   }
 
-  async callPlayerData() {
+  async callPlayerData(): Promise<void> {
 
-    let data = this.dataService.getPlayerAsync();
+    const data = this.dataService.getPlayerAsync();
     data.then(result => {
-      let el: TableElement = {
+      const el: TableElement = {
         sourcePlayer: /[^#]*/.exec(result.payload[0].source_player_id)[0],
         attackMethod: result.payload[0].method,
         damageAmount: result.payload[0].damage,
         targetPlayer: /[^#]*/.exec(result.payload[0].target_player_id)[0],
-        totalHealth: Math.floor(Math.random()*100),
+        totalHealth: Math.floor(Math.random() * 100),
         description: ''
-      }
+      };
 
       el.description = `${el.sourcePlayer}'s attack of ${el.attackMethod} would deal ${el.damageAmount} total hit points against ${el.targetPlayer}.
-      ${el.targetPlayer} has ${el.totalHealth} hit points which would make this ${el.totalHealth-el.damageAmount > 0 ? 'survivable' : 'unsurvivable'} for ${el.targetPlayer} to withstand 
-      and continue playing against. After taking damage ${el.targetPlayer} would be left with ${el.totalHealth-el.damageAmount}`
+      ${el.targetPlayer} has ${el.totalHealth} hit points which would make this ${el.totalHealth - el.damageAmount > 0 ? 'survivable' : 'unsurvivable'} for ${el.targetPlayer} to withstand
+      and continue playing against. After taking damage ${el.targetPlayer} would be left with ${el.totalHealth - el.damageAmount}`;
 
-      this.dataSource.push(el)
-    })
+      this.dataSource.push(el);
+    });
   }
 
   goHome(): void {
-    window.location.href = "/";
+    window.location.href = '/';
   }
 
 }
